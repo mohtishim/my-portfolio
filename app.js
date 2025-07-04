@@ -1,57 +1,83 @@
-const menuItem1 = document.getElementById('menuItem1');
-const menuItem2 = document.getElementById('menuItem2');
-const menuItem3 = document.getElementById('menuItem3');
-const menuItem4 = document.getElementById('menuItem4');
-const menuItem5 = document.getElementById('menuItem5');
-const menuItem6 = document.getElementById('menuItem6');
+// gsap.registerPlugin(ScrollTrigger);
 
-gsap.from("#menuItem1",
+ScrollTrigger.create({
+  trigger: ".section1", 
+  start: "top top",
+  endTrigger:".section3",
+  end:'top top',
+  toggleClass: { targets: "#navbar", className: "fixed" },
+  onEnter: () =>{
+    document.querySelector('#navbar img').src= "./Images/logo white.png"
+    gsap.from('.fixed',{
+    duration:1,
+    y:"-200",
+    ease:'power4.out'
+})
+},
+onLeaveBack: ()=>{
+    document.querySelector('#navbar img').src= './Images/ohtishim.png'
+}
+})
+ 
+gsap.from('.sec2div1', {
+    scrollTrigger: {
+        trigger: '.section2',
+        top: 'top 30%',
+    },
+    duration: 1.5,
+    y: '100%',
+    ease: 'bounce',
+    // opacity: 0,
+})
+
+gsap.from('#dpDiv',{
+    scrollTrigger:{
+        trigger: ".section2",
+        start: "top 30%"},
+    duration: 1.5,
+    // ease: "bounce",
+    rotation: -360,
+    x:"-100%",
+    opacity:0
+}
+)
+
+gsap.from('.sec2div3',{
+    scrollTrigger:{
+        trigger:".section2",
+        start:"top 30%"
+    },
+    duration: 1.5,
+    // ease:"bounce",
+    rotation: 360,
+    x:"100%",
+    opacity:0
+})
+
+
+gsap.from(".menuItem1",
   {
     y: -100,
-    duration: 0.3,
-    ease: "power2.out"
+    opacity: 0,
+    duration: 1,
+    ease: "bounce",
+    stagger: 0.2
   }
 )
-gsap.from(menuItem2,
-  {
-    y: -100,
-    duration: 0.3,
-    delay: 0.3,
-    ease: "power2.out"
-  }
-)
-gsap.from(menuItem3,
-  {
-    y: -100,
-    duration: 0.3,
-    delay: 0.6,
-    ease: "power2.out"
-  }
-)
-gsap.from(menuItem4,
-  {
-    y: -100,
-    duration: 0.3,
-    delay: 0.9,
-    ease: "power2.out"
-  }
-)
-gsap.from(menuItem5,
-  {
-    y: -100,
-    duration: 0.3,
-    delay: 1.2,
-    ease: "power2.out"
-  }
-)
-gsap.from(menuItem6,
-  {
-    y: -100,
-    duration: 0.3,
-    delay: 1.5,
-    ease: "power2.out"
-  }
-)
+
+gsap.from('.digits', {
+    scrollTrigger:{
+        trigger:'.section3',
+        start:'top 60%'
+    },
+    
+  textContent: 0,
+  duration: 1,
+  ease: Power1.easeIn,
+  snap: { textContent: 1 }
+});
+
+
 
 
 let textHeading = document.getElementById('textHeading');
